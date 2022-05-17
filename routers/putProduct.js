@@ -32,9 +32,9 @@ router.put('/change/:id' ,  (req, res) => {
             let newData = JSON.parse(data)
             // console.log(newData);
 
-            newData[idIndex]["name"] = req.body.name
-            newData[idIndex]["lastname"] = req.body.lastname
-            newData[idIndex]["age"] = req.body.age
+            newData[idIndex]["title"] = req.body.title
+            newData[idIndex]["price"] = req.body.price
+            newData[idIndex]["thumbnail"] = req.body.thumbnail
 
             fs.writeFile('./text.json' , JSON.stringify(newData) , (err) => {
                 if(err){

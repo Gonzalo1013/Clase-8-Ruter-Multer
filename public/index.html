@@ -5,39 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
     <h1>Hola Mundo</h1>
     <div style="display: flex; justify-content: center;">
 
-        <form action="/uploadfile" enctype="multipart/form-data" method="POST"  
-        style="  
-            border: solid black; 
-            padding: 16px;
-            width: 400px;">
-            
-            <div>
-                <label for="" style="display: flex; justify-content: space-between;">ID</label>
-                <input type="number" placeholder="number">
+        <form action="/" enctype="multipart/form-data" method="POST"  
+                    style="  
+                        border: solid black; 
+                        padding: 16px;
+                        width: 400px;">
+
+            <div  style="margin-top: 10px;">
+                <label for="" style="display: flex; justify-content: space-between;">Title</label>
+                <input type="text" name="title" placeholder="xxName of productxx">
             </div>
             <div  style="margin-top: 10px;">
-                <label for="" style="display: flex; justify-content: space-between;">Nombre</label>
-                <input type="text" placeholder="xxGonzaloxx">
+                <label for="" style="display: flex; justify-content: space-between;">Price</label>
+                <input type="number" name="price" placeholder="$number">
             </div>
-            <div  style="margin-top: 10px;">
-                <label for="" style="display: flex; justify-content: space-between;">Precio</label>
-                <input type="number" placeholder="$number">
-            </div>
-            <div  style="margin-top: 10px;">
-                <label for="" style="display: flex; justify-content: space-between;">Descripción</label>
-                <input type="text" placeholder="xxxComo nuevoxxx">
-            </div>
-            
             
             <div  style="margin-top: 10px;">
                 <label for="" style="display: flex; justify-content: space-between;">Archivo</label>
-                <input type="file" name="myFile" >
+                <input type="file" name="thumbnail" >
             </div>
             <div  style="margin-top: 10px; text-align: center;">
                 <input type="submit" value="Agregar" 

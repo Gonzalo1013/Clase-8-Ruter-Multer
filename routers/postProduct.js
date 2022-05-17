@@ -11,27 +11,36 @@ const arrayProducts = []
 router.post('/add', (req, res) => {
     // console.log(req.body);
     
-    let {name, lastname, age, id} = req.body
-    let newProduct = {
-        name,
-        lastname,
-        age,
-        id
+    let {title, price, thumbnail} = req.body
+    let firstProduct = {
+        title,
+        price,
+        thumbnail,
+        id: 1
     }
-    arrayProducts.push(newProduct)
+    arrayProducts.push(firstProduct)
         fs.readFile('./text.json' , 'utf-8', (err,data)=>{
             if(data ===""){
                 console.log('No hay productos cargados');
                 fs.writeFile('./text.json' , JSON.stringify(arrayProducts), 'utf-8' , (err,data)=>{
                     if(err){
-                        console.log("No se pudo agregar el producto");
+                        res.send("No se pudo agregar el producto");
                     }else {
-                        console.log("El producto se agrego correctamente");
+                        res.send({message: "El producto se agrego correctamente", product: firstProduct});
                     }
                 })
 
             }else{
                 const copy = JSON.parse(data)
+                let ind = copy[copy.length -1]['id'] 
+                let idd = ind +1 
+                let {title, price, thumbnail} = req.body
+                let newProduct = {
+                    title,
+                    price,
+                    thumbnail,
+                    id: idd
+                }
                 copy.push(newProduct)
                 fs.unlink(`./text.json`, error =>{
                     if(error){
@@ -42,14 +51,14 @@ router.post('/add', (req, res) => {
                 })
                 fs.appendFile("./text.json", JSON.stringify(copy), "utf-8", (err,data)=>{
                     if(err){
-                        console.log("Error al cargar");
+                        res.send("Error al cargar");
                     }else{
-                        console.log('Se agrego una nueva persona correctamente.');
+                        res.send({message:'Se agrego una nueva persona correctamente.', product: newProduct});
                     }
                 })
             }
         })
-        res.send(`Se agrego la persona ${req.body.name} correctamente`)
+        res.send({message:'Se agrego una nueva persona correctamente.'})
     
 })
 

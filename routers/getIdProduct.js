@@ -6,7 +6,7 @@ const router = new Router()
 
 router.get('/getById/:id', (req,res)=>{
     let itemId = req.params.id
-    // let id = JSON.parse(itemId)
+    let idd = JSON.parse(itemId)
 
     fs.readFile('./text.json', 'utf-8', (err,data)=>{
         if(err){
@@ -14,11 +14,11 @@ router.get('/getById/:id', (req,res)=>{
         }else{
             let product = JSON.parse(data)
             
-            const itemFound = product.find((item) => item.id === itemId)
+            const itemFound = product.find((item) => item.id === idd)
             if(itemFound){
                 res.send(itemFound)
             }else{
-                res.send({Error : 'Persona no encontrada'})
+                res.send({Error : 'Producto no encontrado!'})
             }
         }
     })

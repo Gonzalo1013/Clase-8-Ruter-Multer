@@ -3,15 +3,15 @@ const fs = require('fs')
 const {Router} = express
 const router = new Router()
 
-router.get('/delete/:id', (req,res) => {
+router.delete('/delete/:id', (req,res) => {
     let itemId = req.params.id
-    // let id = JSON.parse(itemId)
+    let id = JSON.parse(itemId)
     fs.readFile('./text.json', 'utf-8', (err, data)=>{
         if(err){
             console.log('Error!! no se pudo eliminar el producto');
         }else{
             let product = JSON.parse(data)
-            let itemFound = product.find((prod)=>prod.id === itemId)
+            let itemFound = product.find((prod)=>prod.id === id)
             if(itemFound){
                 let index = product.indexOf(itemFound)
                 if(index > -1){
